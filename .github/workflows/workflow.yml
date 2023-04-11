@@ -1,0 +1,34 @@
+name: Go
+
+on: [push, pull_request]
+env:
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+  APP_DB_USERNAME: postgres
+	APP_DB_PASSWORD: postgres
+	APP_DB_NAME: postgres
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Start PostgreSQL Docker container
+      uses: docker/compose-action@v2
+      with:
+        compose-file: docker-compose.yml
+        compose-up-args: --detach
+    - name: Wait for PostgreSQL to start
+      run: docker-compose exec db /bin/sh -c 'while ! nc -z localhost 5432; do sleep 1; done;'
+      
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.19
+
+    - name: Build
+      run: go build -v ./...
+
+    - name: Test
+      run: go test -v ./...
