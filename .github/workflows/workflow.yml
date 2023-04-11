@@ -18,7 +18,7 @@ jobs:
       run: docker-compose -f "docker-compose.yml" up -d
 
     - name: Wait for PostgreSQL to start
-      run: docker-compose exec db /bin/sh -c 'while ! nc -z localhost 5432; do sleep 1; done;'
+      run: docker-compose -f docker-compose.yml exec postgres /bin/sh -c 'while ! nc -z localhost 5432; do sleep 1; done;'
       
     - name: Set up Go
       uses: actions/setup-go@v3
