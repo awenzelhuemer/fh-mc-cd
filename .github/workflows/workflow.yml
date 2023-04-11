@@ -14,11 +14,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
     
-    - name: Start PostgreSQL Docker container
-      uses: docker/compose-action@v2
-      with:
-        compose-file: docker-compose.yml
-        compose-up-args: --detach
+    - name: Start PostgreSQL
+      run: docker-compose -f "docker-compose.yml" up -d
+
     - name: Wait for PostgreSQL to start
       run: docker-compose exec db /bin/sh -c 'while ! nc -z localhost 5432; do sleep 1; done;'
       
