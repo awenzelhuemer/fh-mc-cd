@@ -5,8 +5,8 @@ env:
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: postgres
   APP_DB_USERNAME: postgres
-	APP_DB_PASSWORD: postgres
-	APP_DB_NAME: postgres
+  APP_DB_PASSWORD: postgres
+  APP_DB_NAME: postgres
 jobs:
   build:
     runs-on: ubuntu-latest
