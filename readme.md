@@ -10,7 +10,7 @@
 
 
 
-## Create pipeline with github actions
+## Create pipeline with Github Actions
 
 1. Code needs to be checked out
 2. Docker container needs to get started
@@ -60,7 +60,24 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 ```
 
+Configuration for sonarcloud can be added with the sonar-project.properties file.
+
+```
+sonar.organization=awenzelhuemer
+sonar.projectKey=awenzelhuemer_fh-mc-go-mux
+
+sonar.sources=.
+sonar.exclusions=**/*_test.go
+
+sonar.tests=.
+sonar.test.inclusions=**/*_test.go
+```
+
 ## Add tags
 
 1. With github actions build status is directly integrated into github
 2. It is possible to add sonarcloud code analyzis information.
+
+![Sonarcloud Status](img/status.png)
+
+![Sonarcloud](img/SonarCloud.png)
