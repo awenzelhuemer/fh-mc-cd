@@ -73,7 +73,7 @@ sonar.tests=.
 sonar.test.inclusions=**/*_test.go
 ```
 
-## Add tags
+## Status
 
 1. With github actions build status is directly integrated into github
 2. It is possible to add sonarcloud code analyzis information.
@@ -81,3 +81,11 @@ sonar.test.inclusions=**/*_test.go
 ![Sonarcloud Status](img/status.png)
 
 ![Sonarcloud](img/SonarCloud.png)
+
+![Pipeline check](img/pipeline_check.png)
+
+## Running the pipeline
+
+Successful execution of the pipeline
+
+![Successful execution](img/pipeline.png)
